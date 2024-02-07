@@ -14,7 +14,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.doThings();
+		this.getEventList();
 
 		// axios.get("indirizzo").then(risultato => {
 		// 	console.log(risultato);
@@ -51,10 +51,7 @@ export default {
 <template>
 	<main>
 
-		<button class="btn btn-primary">
-			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
-			<span>Primary button</span>
-		</button>
+		<AppEventsList />
 	</main>
 </template>
 
