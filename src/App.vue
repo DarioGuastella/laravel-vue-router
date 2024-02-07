@@ -1,12 +1,12 @@
 <script>
-import AppComponent from "./components/AppComponent.vue"
+import AppEventsList from "./components/AppEventsList.vue";
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 
 export default {
 	components: {
-		AppComponent
+		AppEventsList
 	},
 	data() {
 		return {
@@ -23,8 +23,26 @@ export default {
 		// });
 	},
 	methods: {
-		doThings() {
-			console.log("App.vue does things");
+		getEventList() {
+			let url = this.store.apiUrl + this.store.apiEventEndpoint;
+
+			axios.get(url).then(result => {
+				if (result.status === 200 && result.data.success) {
+					this.store.eventList = result.data.payload;
+				} else if (result.status === 200 && !result.data.success) {
+					console.error("Ops... non siamo in grado di soddisfare la richiesta.");
+				} else if (result.status === 301) {
+					console.error("Ops... ciò che cerchi non si trova più qui.");
+				} else if (result.status === 400) {
+					console.error("Ops... non riusciamo a comprendere ciò che hai richiesto.");
+				} else if (result.status === 404) {
+					console.error("Ops... non riusciamo a trovare ciò che hai richiesto.");
+				} else if (result.status === 500) {
+					console.error("Ops... ci scusiamo per l'inconveniente, stiamo spegnendo l'incendio.");
+				}
+			}).catch(errore => {
+				console.error(errore);
+			});
 		}
 	}
 }
@@ -32,7 +50,6 @@ export default {
 
 <template>
 	<main>
-		<AppComponent />
 
 		<button class="btn btn-primary">
 			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
