@@ -20,6 +20,7 @@ export default {
                     <div class="card " style="height: 100%;">
                         <div class="card-body">
                             <h5 class="card-title">{{ event.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ event.user.name }}</h6>
                             <p class="card-text">Biglietti disponibili: {{ event.available_tickets }}</p>
                             <a href="#" class="btn btn-primary">Apri dettagli evento</a>
                             <a href="#" class="btn btn-warning ms-2">Compra biglietti</a>
