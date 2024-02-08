@@ -1,5 +1,5 @@
 <script>
-import { MyHeader } from "./components/MyHeader.vue";
+import MyHeader from "./components/MyHeader.vue";
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
@@ -30,8 +30,10 @@ export default {
 				if (result.status === 200) {
 					if (result.data.success) {
 						this.store.eventList = result.data.payload;
+					} else {
+						console.error("Ops... non siamo in grado di soddisfare la richiesta.");
 					}
-					console.error("Ops... non siamo in grado di soddisfare la richiesta.");
+
 				} else if (result.status === 301) {
 					console.error("Ops... ciò che cerchi non si trova più qui.");
 				} else if (result.status === 400) {
