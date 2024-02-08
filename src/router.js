@@ -25,7 +25,7 @@ const router = createRouter({
         },
         {
             path: "/events/:id",
-            name: "Event detail",
+            name: "Event-detail",
             component: EventDetail,
             props: true
         }
@@ -33,4 +33,4 @@ const router = createRouter({
     ]
 });
 
-export { routes };
+export { router };
