@@ -1,12 +1,12 @@
 <script>
-import AppEventsList from "./components/AppEventsList.vue";
+import { MyHeader } from "./components/MyHeader.vue";
 
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 
 export default {
 	components: {
-		AppEventsList
+		MyHeader
 	},
 	data() {
 		return {
@@ -50,9 +50,9 @@ export default {
 </script>
 
 <template>
-	<main>
-
-		<AppEventsList />
+	<MyHeader />
+	<main class="py-3">
+		<router-view></router-view>
 	</main>
 </template>
 
