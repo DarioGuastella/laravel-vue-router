@@ -27,9 +27,10 @@ export default {
 			let url = this.store.apiUrl + this.store.apiEventEndpoint;
 
 			axios.get(url).then(result => {
-				if (result.status === 200 && result.data.success) {
-					this.store.eventList = result.data.payload;
-				} else if (result.status === 200 && !result.data.success) {
+				if (result.status === 200) {
+					if (result.data.success) {
+						this.store.eventList = result.data.payload;
+					}
 					console.error("Ops... non siamo in grado di soddisfare la richiesta.");
 				} else if (result.status === 301) {
 					console.error("Ops... ciò che cerchi non si trova più qui.");
