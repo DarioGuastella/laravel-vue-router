@@ -50,7 +50,8 @@ export default {
             <h3 class="mb-3">A cura di: {{ event?.user.name }}</h3>
             <h5 class="mb-3"> Email: {{ event?.user.email }}</h5>
             <h3 class="mb-3">Data dell'evento: {{ event?.date }}</h3>
-            <h3 class="mb-3">Tag associati: <span class="mx-2" v-for="tag in event?.tags">{{ tag.name }}</span></h3>
+            <h3 class="mb-3">Tag associati: <span class="mx-2 badge rounded-pill text-bg-info" v-for="tag in event?.tags">{{
+                tag.name }}</span></h3>
             <h3 class="mb-3">Biglietti rimanenti: {{ event?.available_tickets }}</h3>
             <router-link :to="{ name: 'Events' }" class="btn btn-primary">
                 <span>Torna alla lista eventi</span>
