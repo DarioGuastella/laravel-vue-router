@@ -45,7 +45,7 @@ export default {
     <div class="container">
         <div class="row">
             <h1>Eventi in programma:</h1>
-            <EventCard v-for="(event, index) in store.eventList" :key="index" :item="store.eventList[index]" />
+            <EventCard v-for="event in store.eventList" :item="event" />
         </div>
     </div>
 </template>
