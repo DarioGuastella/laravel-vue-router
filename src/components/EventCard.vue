@@ -11,8 +11,6 @@ export default {
             <h6 class="card-header">Data evento: {{ item.date }}</h6>
             <div class="card-body">
                 <h5 class="card-title">{{ item.name }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ item.user ? item.user.name : "Utente sconosciuto"
-                }}</h6>
                 <p class="card-text">Biglietti disponibili: {{ item.available_tickets }}</p>
                 <router-link :to="{ name: 'Event-detail', params: { id: item.id } }" class="btn btn-primary">
                     <span>Apri dettagli evento</span>
