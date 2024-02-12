@@ -5,6 +5,7 @@ import AppAbout from "./pages/AppAbout.vue";
 import EventList from "./pages/EventList.vue";
 import EventDetail from "./pages/EventDetail.vue";
 import TagsList from "./pages/TagsList.vue";
+import TagDetail from "./pages/TagDetail.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -34,6 +35,12 @@ const router = createRouter({
             path: "/tags",
             name: "Tags",
             component: TagsList
+        },
+        {
+            path: "/tags/:id",
+            name: "Tag-detail",
+            component: TagDetail,
+            props: true
         }
 
     ]
