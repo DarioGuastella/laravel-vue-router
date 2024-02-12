@@ -2,10 +2,12 @@
 import { store } from "../store.js"
 import axios from "axios";
 export default {
-    name: "TagsList",
+    name: "TagDetail",
+    props: ["id"],
     data() {
         return {
-            store
+            store,
+            event: null
         }
     },
     mounted() {
@@ -14,12 +16,12 @@ export default {
     },
     methods: {
         getTagDetail() {
-            let url = this.store.apiUrl + this.store.apiTagEndPoint;
+            let url = this.store.apiUrl + this.store.apiTagEndPoint + this.id;
 
             axios.get(url).then(result => {
                 if (result.status === 200) {
                     if (result.data.success) {
-                        this.store.tagList = result.data.payload;
+                        this.event = result.data.payload;
                     } else {
                         console.error("Ops... non siamo in grado di soddisfare la richiesta.");
                     }
@@ -40,14 +42,12 @@ export default {
     }
 }
 </script>
-
+<!-- user_id name date available_tickets user {id name email} -->
 <template>
-    <ul>
-        <h1>Lista tags disponibili:</h1>
-        <li v-for="tag in store.tagList">
-            <router-link :to="{ name: 'Tag-detail', params: { id: tag.id } }" class="btn btn-primary">
-                <span>{{ tag.name }}</span>
-            </router-link>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <h1 class="mb-3">Nome tag: {{ event?.name }}</h1>
+            <h3 class="mb-3">Identificativo tag: {{ event?.id }}</h3>
+        </div>
+    </div>
 </template>
