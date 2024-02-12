@@ -15,6 +15,10 @@ export default {
                 {
                     routeName: "About",
                     label: "Chi siamo"
+                },
+                {
+                    routeName: "Tags",
+                    label: "Tags"
                 }
             ]
         }
