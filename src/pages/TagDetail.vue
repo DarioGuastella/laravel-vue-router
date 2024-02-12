@@ -1,8 +1,12 @@
 <script>
 import { store } from "../store.js"
 import axios from "axios";
+import EventCard from "../components/EventCard.vue";
 export default {
     name: "TagDetail",
+    components: {
+        EventCard
+    },
     props: ["id"],
     data() {
         return {
@@ -48,6 +52,9 @@ export default {
         <div class="row">
             <h1 class="mb-3">Nome tag: {{ event?.name }}</h1>
             <h3 class="mb-3">Identificativo tag: {{ event?.id }}</h3>
+            <h3>Eventi con questo tag:</h3>
+            <EventCard v-for="event in this.event?.events" :item="event" />
+
         </div>
     </div>
 </template>
